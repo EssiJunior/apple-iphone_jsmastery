@@ -173,7 +173,7 @@ const VideoCarousel = () => {
                                 <video
                                     id="video"
                                     playsInline={true}
-                                    className={`${list.id === 2 ? "translate-x-44":""
+                                    className={`${list.id === 2 ? "translate-x-44" : ""
                                         } pointer-events-none`}
                                     preload="auto"
                                     muted
@@ -220,19 +220,21 @@ const VideoCarousel = () => {
                     ))}
                 </div>
 
-                <button className="control-btn">
+                <button className="control-btn cursor-pointer z-50"
+                    onClick={
+                        isLastVideo
+                            ? () => handleProcess("video-reset")
+                            : !isPlaying
+                                ? () => handleProcess("play")
+                                : () => handleProcess("pause")
+                    
+                    }>
                     <Image
                         height={18}
                         width={18}
                         src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
                         alt={isLastVideo ? "replay" : !isPlaying ? "play" : "pause"}
-                        onClick={
-                            isLastVideo
-                                ? () => handleProcess("video-reset")
-                                : !isPlaying
-                                    ? () => handleProcess("play")
-                                    : () => handleProcess("pause")
-                        }
+
                     />
                 </button>
             </div>

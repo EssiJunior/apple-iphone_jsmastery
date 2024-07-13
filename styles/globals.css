@@ -9,12 +9,9 @@
 }
 
 body {
-  color: white;
   width: 100dvw;
   overflow-x: hidden;
   height: 100%;
-  background: #000;
-  border-color: #3b3b3b;
   user-select: none;
 }
 
@@ -22,7 +19,7 @@ canvas {
   touch-action: none;
 }
 
-.scrim-max-width {
+.screen-max-width {
   margin-inline-start: auto;
   margin-inline-end: auto;
   position: relative;
@@ -99,7 +96,7 @@ canvas {
   }
 
   .hiw-video {
-    @apply absolute w-[95%] h-[90%] rounded-[56px] overflow-hidden
+    @apply absolute w-[80%] h-[90%] rounded-[56px] overflow-hidden
   }
 
   .hiw-text-container {
@@ -111,7 +108,7 @@ canvas {
   }
 
   .hiw-bigtext {
-    @apply text-white text-3xl md:text-5xl font-normal md:font-semibold my-2
+    @apply text-3xl md:text-5xl font-normal md:font-semibold my-2
   }
 
   .video-carousel_container {

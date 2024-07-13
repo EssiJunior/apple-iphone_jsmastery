@@ -1,14 +1,20 @@
-import { appleImg, bagImg, searchImg } from '../utils';
+"use client"
+
+import { appleDarkImg, appleImg, bagDarkImg, bagImg, searchDarkImg, searchImg } from '../utils';
 import { navLists } from '../constants';
 import Image from 'next/image';
+import { darkTheme, lightTheme } from '../utils/theme';
+import { useTheme } from 'styled-components'
 
-const Navbar = () => {
+const Navbar = ({ toggleTheme }) => {
+
+    const theme = useTheme()
     return (
         <header className="w-full py-5 sm:px-10 px-5 flex justify-between items-center">
             <nav className="flex w-full screen-max-width">
 
                 <Image
-                    src={appleImg}
+                    src={theme.tag === 'light' ? appleDarkImg : appleImg}
                     width={14}
                     height={18}
                     alt='Apple'
@@ -23,14 +29,35 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex items-baseline gap-7 max-sm:justify-end max-sm:flex-1">
+                    {
+                        theme.tag === 'light' ?
+
+                            <Image
+                                src='/assets/theme/dark.svg'
+                                alt='logo'
+                                width={20}
+                                height={20}
+                                className='cursor-pointer z-20'
+                                onClick={() => toggleTheme(darkTheme)}
+                            /> :
+                            <Image
+                                src='/assets/theme/light.svg'
+                                alt='logo'
+                                width={20}
+                                height={20}
+                                className='cursor-pointer z-20'
+                                onClick={() => toggleTheme(lightTheme)}
+                            />
+
+                    }
                     <Image
-                        src={searchImg}
+                        src={theme.tag === 'light' ? searchDarkImg: searchImg}
                         width={18}
                         height={18}
                         alt='search'
                     />
                     <Image
-                        src={bagImg}
+                        src={theme.tag === 'light' ? bagDarkImg: bagImg}
                         width={18}
                         height={18}
                         alt='bag'
